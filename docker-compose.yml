@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  ghma:
+    build: ./docker
+    stop_grace_period: 60s
+    volumes:
+      - .:/log
+    env_file:
+      - ./docker/.env
