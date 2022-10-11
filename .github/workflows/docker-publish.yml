@@ -33,11 +33,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Prep
-        run: |
-          echo Building with Runner version ${{ needs.output-collector.outputs.release-version }}
-          echo ${{ needs.output-collector.outputs.release-version }} | grep 2
-
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
@@ -58,8 +53,6 @@ jobs:
           context: ./docker
           push: true
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
-            RUNNER_VERSION=${{needs.output-collector.outputs.release-version}}
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{needs.output-collector.outputs.release-version}}
