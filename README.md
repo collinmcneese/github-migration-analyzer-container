@@ -94,3 +94,54 @@ docker run \
   -v $(pwd):/log \
   collinmcneese/github-migration-analyzer
 ```
+
+Example Output:
+
+```plain
+❯ docker run \
+    -e GHMA_SOURCETYPE=GITHUB \
+    -e GHMA_ORGANIZATION=my-org \
+    -e GHMA_TOKEN='ghp_12345' \
+    -e GHMA_SERVER='https://myGitHub-Enterprise-Server/api/graphql' \
+    -v $(pwd):/log \
+    github-migration-analyzer-container-ghma
+
+[2022-10-11T15:59:31Z] Starting GitHub Migration Analyzer
+[2022-10-11T15:59:31Z] GHMA_SOURCETYPE is set to GITHUB
+[2022-10-11T15:59:31Z] Scanning org my-org
+[2022-10-11T15:59:31Z] Using custom GitHub Enterprise server https://myGitHub-Enterprise-Server/api/graphql
+- Authorizing with GitHub
+✔ Authorized with GitHub
+
+- (0/102) Fetching metrics for repo cataclysmic-psychotherapy
+✔ (1/102) Fetching metrics for repo cataclysmic-psychotherapy
+- (1/102) Fetching metrics for repo accomplished-cameo
+✔ (2/102) Fetching metrics for repo accomplished-cameo
+- (2/102) Fetching metrics for repo crystalline-mumble
+... truncated ...
+- (97/102) Fetching metrics for repo repo830.11834688148397421
+✔ (98/102) Fetching metrics for repo repo830.11834688148397421
+- (98/102) Fetching metrics for repo repo840.8609665216775823
+✔ (99/102) Fetching metrics for repo repo840.8609665216775823
+- (99/102) Fetching metrics for repo repo860.22865287616391772
+✔ (100/102) Fetching metrics for repo repo860.22865287616391772
+- (100/102) Fetching next 50 repos
+✔ (100/102) Fetched next 100 repos
+- (100/102) Fetching metrics for repo repo1
+✔ (101/102) Fetching metrics for repo repo1
+- (101/102) Fetching metrics for repo my-repo
+✔ (102/102) Fetching metrics for repo my-repo
+
+- Exporting...
+✔ Exporting Completed: ./my-org-metrics/repo-metrics.csv
+- Exporting...
+✔ Exporting Completed: ./my-org-metrics/org-metrics.csv
+
+
+❯ tree my-org-metrics
+my-org-metrics
+├── org-metrics.csv
+└── repo-metrics.csv
+
+0 directories, 2 files
+```
