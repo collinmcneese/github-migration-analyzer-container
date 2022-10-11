@@ -1,5 +1,8 @@
 # GitHub Migration Analyzer Container
 
+[![CI](https://github.com/collinmcneese/github-migration-analyzer-container/actions/workflows/ci.yml/badge.svg)](https://github.com/collinmcneese/github-migration-analyzer-container/actions/workflows/ci.yml)
+[![Create and publish a Docker image](https://github.com/collinmcneese/github-migration-analyzer-container/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/collinmcneese/github-migration-analyzer-container/actions/workflows/docker-publish.yml)
+
 Example repository for building a container image to run [GitHub Migration Analyzer](https://github.com/github/gh-migration-analyzer)
 
 The contents of this are meant as reference example and should be tested before running in a real environment.
