@@ -9,6 +9,8 @@ The contents of this are meant as reference example and should be tested before 
   - [Container Image](#container-image)
     - [Using the Published Container Image](#using-the-published-container-image)
     - [Building & Using the Container Image Locally with Docker Compose](#building--using-the-container-image-locally-with-docker-compose)
+  - [Examples](#examples)
+    - [Analyzing Multiple GitHub Organizations](#analyzing-multiple-github-organizations)
 
 ## References
 
@@ -71,3 +73,21 @@ The image configuration built from this example is published to [GitHub Packages
   ```shell
   docker-compose up
   ```
+
+## Examples
+
+### Analyzing Multiple GitHub Organizations
+
+The `GHMA_ORGANIZATION` environment variable is able to accept a new-line-seperated list of names to scan multiple organizations at once.  This example using the [GitHub CLI](https://cli.github.com/) to fetch a listing of all available organizations from a GitHub Enterprise Server and then uses that output to run the container image:
+
+```shell
+orglist=$(GH_ENTERPRISE_TOKEN=ghp_mytoken123 GH_HOST=my-ghes-fqdn.domain gh api /organizations --paginate -q '.[].login')
+
+docker run \
+  -e GHMA_SOURCETYPE=GITHUB \
+  -e GHMA_ORGANIZATION=${orglist} \
+  -e GHMA_TOKEN='ghp_12345' \
+  -e GHMA_SERVER='https://myGitHub-Enterprise-Server/api/graphql' \
+  -v $(pwd):/log \
+  collinmcneese/github-migration-analyzer
+```

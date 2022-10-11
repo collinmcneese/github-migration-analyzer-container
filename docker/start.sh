@@ -16,7 +16,7 @@ then
 
   if [[ -n ${GHMA_ORGANIZATION} && -n ${GHMA_TOKEN} ]] ;
     then
-      for org in ${GHMA_ORGANIZATION//\n/} ;
+      for org in ${GHMA_ORGANIZATION//\\n/} ;
       do
         log "Scanning org ${org}"
 
@@ -49,7 +49,7 @@ then
 
     if [[ -n ${GHMA_ORGANIZATION} ]] ;
     then
-      for org in ${GHMA_ORGANIZATION//\n/} ;
+      for org in ${GHMA_ORGANIZATION//\\n/} ;
       do
         log "Scanning org ${org}"
         script_with_args+=" -o ${org}"
