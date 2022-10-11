@@ -27,7 +27,7 @@ This repository has a reference [docker](./docker) example which contains a `Doc
 
 The image configuration built from this example is published to [GitHub Packages](https://github.com/collinmcneese/github-migration-analyzer-container/pkgs/container/github-migration-analyzer) and can be pulled rather than performing a local build for quick testing.
 
-- The GitHub Container Registry requires authenticated login to pull images. See [Docs](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry) for details
+- The [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/) is used in this example as the container registry source.
 - Pull the image locally for usage:
 
   ```shell
