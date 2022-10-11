@@ -23,7 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: shellcheck
-        run: shellcheck **/*.sh
+        run: |
+          shellcheck ./docker/start.sh
 
   build-image:
     runs-on: ubuntu-latest
