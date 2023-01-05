@@ -46,7 +46,7 @@ The image configuration built from this example is published to [GitHub Packages
     -e GHMA_TOKEN='ghp_12345' \
     -e GHMA_SERVER='https://myGitHub-Enterprise-Server/api/graphql' \
     -v $(pwd):/log \
-    collinmcneese/github-migration-analyzer
+    ghcr.io/collinmcneese/github-migration-analyzer
   ```
 
 ### Building & Using the Container Image Locally with Docker Compose
