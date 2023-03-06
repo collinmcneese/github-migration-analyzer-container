@@ -11,7 +11,7 @@ The contents of this are meant as reference example and should be tested before 
   - [References](#references)
   - [Container Image](#container-image)
     - [Using the Published Container Image](#using-the-published-container-image)
-    - [Building & Using the Container Image Locally with Docker Compose](#building--using-the-container-image-locally-with-docker-compose)
+    - [Building \& Using the Container Image Locally with Docker Compose](#building--using-the-container-image-locally-with-docker-compose)
   - [Examples](#examples)
     - [Analyzing Multiple GitHub Organizations](#analyzing-multiple-github-organizations)
 
@@ -40,12 +40,16 @@ The image configuration built from this example is published to [GitHub Packages
 - Run the image with environment variables passed:
 
   ```shell
+  # Create a directory to store the output
+  mkdir $(pwd)/log
+
+  # Run interactive container image with arguments
   docker run \
     -e GHMA_SOURCETYPE=GITHUB \
     -e GHMA_ORGANIZATION=my-orgname \
     -e GHMA_TOKEN='ghp_12345' \
     -e GHMA_SERVER='https://myGitHub-Enterprise-Server/api/graphql' \
-    -v $(pwd):/log \
+    -v $(pwd)/log:/log \
     ghcr.io/collinmcneese/github-migration-analyzer
   ```
 
