@@ -15,7 +15,7 @@ jobs:
       release-version: ${{ steps.releaseversion.outputs.version }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - id: releaseversion
         run: ver=$(cat VERSION) && echo "::set-output name=version::${ver}"
 
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: shellcheck
         run: shellcheck **/*.sh
 
@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Log in to the Container registry
         uses: docker/login-action@465a07811f14bebb1938fbed4728c6a1ff8901fc
