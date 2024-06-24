@@ -5,7 +5,10 @@ on:
   push:
     branches:
     - main
-
+    paths:
+    - './docker/**'
+    - './docker-compose.yml'
+    - './VERSION'
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: collinmcneese/github-migration-analyzer
