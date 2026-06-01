@@ -13,14 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
-
-      - name: shellcheck
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6- name: shellcheck
         run: shellcheck **/*.sh
 
       - name: 'Dependency Review'
-        uses: actions/dependency-review-action@v5
-        with:
+        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5with:
           fail-on-severity: high
 
   build-image:
@@ -33,12 +30,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
-
-      - name: Output Collector
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6- name: Output Collector
         id: output-collector
-        uses: collinmcneese/file-output-collector@main
-        with:
+        uses: collinmcneese/file-output-collector@22df6011c851472ffc2e2870dbbbcc29834dcd57 # mainwith:
           file: "./VERSION"
 
       - name: Log in to the Container registry
@@ -73,8 +67,7 @@ jobs:
 
       - name: docker - Build Attestation
         continue-on-error: true
-        uses: actions/attest-build-provenance@v4
-        with:
+        uses: actions/attest-build-provenance@a2bbfa25375fe432b6a289bc6b6cd05ecd0c4c32 # v4with:
           subject-name: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.output-collector.outputs.output }}"
           subject-digest: "${{ steps.build-docker.outputs.digest }}"
           push-to-registry: false
